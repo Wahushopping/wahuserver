@@ -6,11 +6,12 @@ const transporter = nodemailer.createTransport({
   secure: true,
   auth: {
     user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
+    pass: process.env.EMAIL_PASS,
   },
-  tls: {
-    rejectUnauthorized: false // ✅ FIX SSL CERTIFICATE ERROR
-  }
+  connectionTimeout: 20000, // 20 seconds
+  greetingTimeout: 20000,
+  socketTimeout: 20000,
 });
 
 module.exports = transporter;
+
